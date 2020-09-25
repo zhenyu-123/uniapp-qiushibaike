@@ -8,6 +8,7 @@
 		},
 		onHide: function() {
 			console.log('App Hide')
+			
 		}
 	}
 </script>
@@ -16,5 +17,5 @@
 	/* 官方css库 */
 	@import url("./common/uni.css");
 	/* animate */
-	@import url(" ./common/animate.css");
+	@import url("./common/animate.css");
 </style>

@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<view class="animated">点赞</view>
+		<view class="animated" hover-class="bounceIn" >点赞</view>
 	</view>
 </template>
 
@@ -16,11 +16,14 @@ export default {
 };
 </script>
 
-<style>
+<style  scoped lang="scss">
 .content {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
+.animated{
+	font-size: 40rpx;
 }
 </style>
