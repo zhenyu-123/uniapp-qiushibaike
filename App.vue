@@ -15,6 +15,6 @@
 <style>
 	/* 官方css库 */
 	@import url("./common/uni.css");
-	
-	
+	/* animate */
+	@import url(" ./common/animate.css");
 </style>
