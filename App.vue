@@ -21,4 +21,5 @@ export default {
 @import url('./common/iconfont.css');
 /* 自定义的样式 */
 @import './common/free.css';
+@import './common/common.css';
 </style>
