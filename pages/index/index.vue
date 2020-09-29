@@ -22,15 +22,19 @@
 		</scroll-view>
 
 		<swiper :duration="255" :current="tabIndex" @change="onchange" :style="'height:' + scrollH + 'px'">
-			<swiper-item v-for="(item, index) in tabBar" :key="index">
+			<swiper-item v-for="(item, index) in list" :key="index">
 				<scroll-view @scrolltolower="scrolltolower(index)" :style="'height:' + scrollH + 'px'" :scroll-y="true">
-					<comList @follow="follow" @ndosupport="ndosupport" @dosupport="dosupport" :list="list[tabIndex].arr" />
-
-					<!-- 上拉加载 -->
-					<view class="flex align-center justify-center py-3 font">
-					 
-						<text class="font text-light-muted">{{ list[index].loadmore }}</text>
-					</view>
+					<template v-if="item.arr.length > 0">
+						<view>
+							<!-- 列表 -->
+							<comList @follow="follow" @ndosupport="ndosupport" @dosupport="dosupport" :tabIndex="tabIndex" :list="item.arr" />
+							<!-- 上拉加载 -->
+							<loadmore :loadmore="item.loadmore"></loadmore>
+						</view>
+					</template>
+					<template v-else>
+						<view>暂无数据</view>
+					</template>
 				</scroll-view>
 			</swiper-item>
 		</swiper>
@@ -38,10 +42,117 @@
 </template>
 
 <script>
-import comList from '@/compoents/common/common_list.vue';
+import comList from '@/components/common/common_list.vue';
+import loadmore from '@/components/common/loadmore.vue';
+var j = 1;
+const datas = {
+	loadmore: '上拉加载更多',
+	arr: [
+		{
+			username: '名字',
+			userpic: '../../static/bgimg/1.jpg',
+			newstime: '2019-10-10 下午2点',
+			isFollow: false,
+			title: '标题',
+			titlepic: '../../static/demo/datapic/11.jpg',
+			support: { type: '', support_count: 0, unsupport_count: 0 },
+			share_num: 2,
+			commit_num: 11
+		},
+		{
+			username: '名字',
+			userpic: '../../static/bgimg/1.jpg',
+			newstime: '2019-10-10 下午2点',
+			isFollow: false,
+			title: '标题',
+			titlepic: '',
+			support: { type: '', support_count: 0, unsupport_count: 0 },
+			share_num: 2,
+			commit_num: 11
+		},
+		{
+			username: '名字',
+			userpic: '../../static/bgimg/1.jpg',
+			newstime: '2019-10-10 下午2点',
+			isFollow: false,
+			title: '标题',
+			titlepic: '../../static/demo/datapic/11.jpg',
+			support: { type: '', support_count: 0, unsupport_count: 0 },
+			share_num: 2,
+			commit_num: 11
+		},
+		{
+			username: '名字',
+			userpic: '../../static/bgimg/1.jpg',
+			newstime: '2019-10-10 下午2点',
+			isFollow: false,
+			title: '标题',
+			titlepic: '',
+			support: { type: '', support_count: 0, unsupport_count: 0 },
+			share_num: 2,
+			commit_num: 11
+		},
+		{
+			username: '名字',
+			userpic: '../../static/bgimg/1.jpg',
+			newstime: '2019-10-10 下午2点',
+			isFollow: false,
+			title: '标题',
+			titlepic: '',
+			support: { type: '', support_count: 0, unsupport_count: 0 },
+			share_num: 2,
+			commit_num: 11
+		},
+		{
+			username: '名字',
+			userpic: '../../static/bgimg/1.jpg',
+			newstime: '2019-10-10 下午2点',
+			isFollow: false,
+			title: '标题',
+			titlepic: '',
+			support: { type: '', support_count: 0, unsupport_count: 0 },
+			share_num: 2,
+			commit_num: 11
+		},
+		{
+			username: '名字',
+			userpic: '../../static/bgimg/1.jpg',
+			newstime: '2019-10-10 下午2点',
+			isFollow: false,
+			title: '标题',
+			titlepic: '',
+			support: { type: '', support_count: 0, unsupport_count: 0 },
+			share_num: 2,
+			commit_num: 11
+		},
+		{
+			username: '名字',
+			userpic: '../../static/bgimg/1.jpg',
+			newstime: '2019-10-10 下午2点',
+			isFollow: false,
+			title: '标题',
+			titlepic: '../../static/demo/datapic/11.jpg',
+			support: { type: '', support_count: 0, unsupport_count: 0 },
+			share_num: 2,
+			commit_num: 11
+		},
+		{
+			username: '名字',
+			userpic: '../../static/bgimg/1.jpg',
+			newstime: '2019-10-10 下午2点',
+			isFollow: false,
+			title: '标题',
+			titlepic: '../../static/demo/datapic/11.jpg',
+			support: { type: '', support_count: 0, unsupport_count: 0 },
+			share_num: 2,
+			commit_num: 11
+		}
+	]
+};
 export default {
 	components: {
-		comList
+		comList,
+		loadmore
 	},
 	data() {
 		return {
@@ -59,56 +170,11 @@ export default {
 				{ name: '美食', id: 5 },
 				{ name: '数码', id: 6 }
 			],
-			newlist:[],
+			newlist: [],
 			list: [
 				{
-					loadmore: '',//上拉加载更多... 加载中... 没有了...
-					arr: [
-						{
-							username: '名字',
-							userpic: '../../static/bgimg/1.jpg',
-							newstime: '2019-10-10 下午2点',
-							isFollow: false,
-							title: '标题',
-							titlepic: '',
-							support: { type: '', support_count: 0, unsupport_count: 0 },
-							share_num: 2,
-							commit_num: 11
-						},
-						{
-							username: '名字',
-							userpic: '../../static/bgimg/1.jpg',
-							newstime: '2019-10-10 下午2点',
-							isFollow: false,
-							title: '标题',
-							titlepic: '../../static/demo/datapic/11.jpg',
-							support: { type: '', support_count: 11, unsupport_count: 11 },
-							share_num: 2,
-							commit_num: 11
-						},
-						{
-							username: '名字',
-							userpic: '../../static/bgimg/1.jpg',
-							newstime: '2019-10-10 下午2点',
-							isFollow: false,
-							title: '标题',
-							titlepic: '',
-							support: { type: '', support_count: 11, unsupport_count: 11 },
-							share_num: 2,
-							commit_num: 11
-						},
-						{
-							username: '名字',
-							userpic: '../../static/bgimg/1.jpg',
-							newstime: '2019-10-10 下午2点',
-							isFollow: false,
-							title: '标题',
-							titlepic: '../../static/demo/datapic/11.jpg',
-							support: { type: '', support_count: 11, unsupport_count: 11 },
-							share_num: 2,
-							commit_num: 11
-						}
-					]
+					loadmore: '', //上拉加载更多... 加载中... 没有了...
+					arr: []
 				}
 			]
 		};
@@ -124,130 +190,37 @@ export default {
 		// 获取数据
 		this.getData();
 	},
+	//监听原生标题栏搜索输入框点击事件
+	onNavigationBarSearchInputClicked() {
+		uni.navigateTo({
+			url: '/pages/search/search'
+		});
+	},
 	methods: {
 		// 触底
 		scrolltolower(index) {
+			//加载数据
+			let newarr = this.list[index];
 			this.list[index].loadmore = '加载中...';
 			setTimeout(() => {
-				//加载数据
-				let newarr = this.list[index];
-				this.list[index].arr = [...newarr.arr,...newarr.arr];
+				this.list[index].arr = [...newarr.arr, ...newarr.arr];
 				// 恢复当前的状态
 				this.list[index].loadmore = '上拉加载更多';
 			}, 200);
-			 
 		},
 		// 获取数据
 		getData() {
 			let arrs = [];
 			for (let i = 0; i < this.tabBar.length; i++) {
-				let obj = {
-					loadmore: '上拉加载更多',
-					arr: [
-						{
-							username: '名字',
-							userpic: '../../static/bgimg/1.jpg',
-							newstime: '2019-10-10 下午2点',
-							isFollow: false,
-							title: '标题',
-							titlepic: '../../static/demo/datapic/11.jpg',
-							support: { type: '', support_count: 0, unsupport_count: 0 },
-							share_num: 2,
-							commit_num: 11
-						},
-						{
-							username: '名字',
-							userpic: '../../static/bgimg/1.jpg',
-							newstime: '2019-10-10 下午2点',
-							isFollow: false,
-							title: '标题',
-							titlepic: '',
-							support: { type: '', support_count: 0, unsupport_count: 0 },
-							share_num: 2,
-							commit_num: 11
-						},
-						{
-							username: '名字',
-							userpic: '../../static/bgimg/1.jpg',
-							newstime: '2019-10-10 下午2点',
-							isFollow: false,
-							title: '标题',
-							titlepic: '../../static/demo/datapic/11.jpg',
-							support: { type: '', support_count: 0, unsupport_count: 0 },
-							share_num: 2,
-							commit_num: 11
-						},
-						{
-							username: '名字',
-							userpic: '../../static/bgimg/1.jpg',
-							newstime: '2019-10-10 下午2点',
-							isFollow: false,
-							title: '标题',
-							titlepic: '',
-							support: { type: '', support_count: 0, unsupport_count: 0 },
-							share_num: 2,
-							commit_num: 11
-						},
-						{
-							username: '名字',
-							userpic: '../../static/bgimg/1.jpg',
-							newstime: '2019-10-10 下午2点',
-							isFollow: false,
-							title: '标题',
-							titlepic: '',
-							support: { type: '', support_count: 0, unsupport_count: 0 },
-							share_num: 2,
-							commit_num: 11
-						},
-						{
-							username: '名字',
-							userpic: '../../static/bgimg/1.jpg',
-							newstime: '2019-10-10 下午2点',
-							isFollow: false,
-							title: '标题',
-							titlepic: '',
-							support: { type: '', support_count: 0, unsupport_count: 0 },
-							share_num: 2,
-							commit_num: 11
-						},
-						{
-							username: '名字',
-							userpic: '../../static/bgimg/1.jpg',
-							newstime: '2019-10-10 下午2点',
-							isFollow: false,
-							title: '标题',
-							titlepic: '',
-							support: { type: '', support_count: 0, unsupport_count: 0 },
-							share_num: 2,
-							commit_num: 11
-						},
-						{
-							username: '名字',
-							userpic: '../../static/bgimg/1.jpg',
-							newstime: '2019-10-10 下午2点',
-							isFollow: false,
-							title: '标题',
-							titlepic: '../../static/demo/datapic/11.jpg',
-							support: { type: '', support_count: 0, unsupport_count: 0 },
-							share_num: 2,
-							commit_num: 11
-						},{
-							username: '名字',
-							userpic: '../../static/bgimg/1.jpg',
-							newstime: '2019-10-10 下午2点',
-							isFollow: false,
-							title: '标题',
-							titlepic: '../../static/demo/datapic/11.jpg',
-							support: { type: '', support_count: 0, unsupport_count: 0 },
-							share_num: 2,
-							commit_num: 11
-						}
-					]
-				};
-				arrs.push(obj);
+				let obj = datas;
+				// 只给前俩个选项加数据,其余的置为空数据
+				if (i < 2) {
+					arrs.push(obj);
+				} else {
+					arrs.push({ loadmore: '', arr: [] });
+				}
 			}
 			this.list = arrs;
-			// console.log(this.list)
 		},
 		// 监听滑动
 		onchange(event) {
@@ -267,7 +240,7 @@ export default {
 		//踩
 		ndosupport(e) {
 			let { list } = this;
-			let newsa=list[this.tabIndex].arr[e.index]
+			let newsa = list[this.tabIndex].arr[e.index];
 			setTimeout(() => {
 				let res = newsa.support.type;
 				// 之前没有操作
@@ -284,9 +257,9 @@ export default {
 		//点赞
 		dosupport(e) {
 			let { list } = this;
-			let newsa=list[this.tabIndex].arr[e.index]
+			let newsa = list[e.tabIndex].arr[e.index];
 			setTimeout(() => {
-				let res =newsa.support.type;
+				let res = newsa.support.type;
 				// 之前没有操作过
 				if (res != 'support') {
 					newsa.support.support_count++;
@@ -302,7 +275,7 @@ export default {
 		// 关注
 		follow(index) {
 			let { list } = this;
-			let newsa=list[this.tabIndex].arr[index]
+			let newsa = list[this.tabIndex].arr[index];
 			setTimeout(() => {
 				newsa.isFollow = true;
 			}, 200);
@@ -310,6 +283,12 @@ export default {
 				title: '关注成功'
 			});
 		}
+	},
+	//监听发布按钮
+	onNavigationBarButtonTap() {
+		uni.navigateTo({
+			url:'/components/add-input/add-input'
+		})
 	}
 };
 </script>

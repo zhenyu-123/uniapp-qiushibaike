@@ -35,7 +35,39 @@
 			"path": "pages/msg/msg",
 			"style": {}
 		}
-	],
+	    ,{
+            "path" : "pages/search/search",
+            "style": {
+            	"navigationBarTitleText": "搜索",
+            	"titleNView":{
+            		"searchInput":{
+            			"align":"left",
+            			"backgroundColor":"#f5f4f2",
+            			"placeholder":"搜索帖子",
+            			"placeholderColor":"#6D6C67",
+            			"borderRadius":"4px"
+            		},
+            		"buttons":[
+            			{
+            				"color":"#333",
+            				"colorPressed":"#FD597C",
+            				"float":"right",
+            				"fontSize":"14px",
+            				"text":"搜索"
+            			}
+            		]
+            	}
+            }
+        }
+        ,{
+            "path" : "components/add-input/add-input",
+            "style" : {
+				"app-plus":{
+					"titleNView":"false"
+				}
+			}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "社区交友",

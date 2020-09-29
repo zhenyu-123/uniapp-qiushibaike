@@ -59,12 +59,12 @@
 <script>
 import divider from './divider.vue';
 export default {
-	props: ['list'],
+	props: ['list','tabIndex'],
 	data() {
 		return {};
 	},
 	mounted() {
-		console.log(this.list)
+		// console.log(this.list)
 		// 选项卡所有列表数据都输出了
 	},
 	methods: {
@@ -78,7 +78,7 @@ export default {
 		detail() {},
 		// 点赞
 		support(index) {
-			this.$emit('dosupport',{index,type:"support"})
+			this.$emit('dosupport',{index,type:"support","tabIndex":this.tabIndex})
 		},
 		//踩
 		nsupport(index) {
