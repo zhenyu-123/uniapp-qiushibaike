@@ -30,7 +30,11 @@
 			"style": {}
 		}, {
 			"path": "pages/news/news",
-			"style": {}
+			"style": {
+				"app-plus":{
+					"titleNView":"false"
+				}
+			}
 		}, {
 			"path": "pages/msg/msg",
 			"style": {}
