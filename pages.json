@@ -71,6 +71,21 @@
 				}
 			}
         }
+        ,{
+            "path" : "pages/news/topicdetail/topicdetail",
+            "style" : {
+				"app-plus":{
+					"titleNView":{
+						"type":"transparent",
+						"autoBackButton":false,
+						"blurEffect":"extralight",
+						"buttons":[{
+							"type":"menu"
+						}]
+					}
+				}
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
