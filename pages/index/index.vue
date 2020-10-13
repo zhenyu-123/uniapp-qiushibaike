@@ -149,6 +149,7 @@ const datas = {
 		}
 	]
 };
+
 export default {
 	components: {
 		comList,
