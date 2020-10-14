@@ -2,7 +2,7 @@
 	<view>
 	   <!-- 消息列表 -->
 	   <block v-for="(item,index) in list" :key="index">
-	   <view class="flex align-center p-2">
+	   <view class="flex align-center p-2" @tap="open(item)">
 	   	<image :src="item.avatar" style="height: 88rpx;width: 80rpx;" class="rounded-circle mr-2" mode=""></image>
 		<view class="flex flex-column  flex-1">
 			<view class="flex align-center justify-between">
@@ -29,8 +29,12 @@
 				 
 			};
 		},
-		mounted() {
-			 
+		methods:{
+			open(item){
+				uni.navigateTo({
+					url:"/pages/user-chat/user-chat"
+				})
+			} 
 		},
 		filters:{
 			formatime(value){
