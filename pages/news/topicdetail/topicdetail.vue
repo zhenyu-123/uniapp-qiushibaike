@@ -62,7 +62,7 @@ const datas = {
 			titlepic: '../../../static/demo/datapic/11.jpg',
 			support: { type: '', support_count: 0, unsupport_count: 0 },
 			share_num: 2,
-			commit_num: 11
+			commit_num: 11,
 		},
 		{
 			username: '名字',
