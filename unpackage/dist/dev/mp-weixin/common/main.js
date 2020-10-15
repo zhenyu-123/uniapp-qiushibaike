@@ -13,7 +13,9 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));function 
 _vue.default.config.productionTip = false;
 
 _App.default.mpType = 'app';
-
+// 注册全局组件
+var divders = function divders() {__webpack_require__.e(/*! require.ensure | components/common/divider */ "components/common/divider").then((function () {return resolve(__webpack_require__(/*! @/components/common/divider.vue */ 76));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+_vue.default.component("divders", divders);
 var app = new _vue.default(_objectSpread({},
 _App.default));
 
@@ -97,7 +99,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   },
   onHide: function onHide() {
     console.log('App Hide');
-
   } };exports.default = _default;
 
 /***/ }),

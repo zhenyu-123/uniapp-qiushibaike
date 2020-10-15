@@ -3,18 +3,24 @@
     "pages/index/index",
     "pages/my/my",
     "pages/news/news",
-    "pages/msg/msg"
+    "pages/msg/msg",
+    "pages/search/search",
+    "components/add-input/add-input",
+    "pages/news/topicdetail/topicdetail",
+    "pages/userlist/userlist",
+    "pages/user-chat/user-chat",
+    "components/user-chat/user-chat"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "社区交友",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#FFFFFF"
   },
   "tabBar": {
     "color": "#B5B5B5",
-    "selectedColor": "#FEE42B",
+    "selectedColor": "#FD597C",
     "borderStyle": "black",
     "backgroundColor": "#FFFFFF",
     "list": [
@@ -44,5 +50,7 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {
+    "divders": "/components/common/divider"
+  }
 }

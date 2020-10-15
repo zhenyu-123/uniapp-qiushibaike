@@ -1,1 +1,1 @@
-<view>msg</view>
+<view><msg-list vue-id="353d4f88-1" list="{{list}}" bind:__l="__l"></msg-list><popup class="vue-ref" vue-id="353d4f88-2" type="top" data-ref="popup" bind:__l="__l" vue-slots="{{['default']}}"><view class="flex align-center font-md border-bottom py-1 justify-center" hover-class="bg-light" data-event-opts="{{[['tap',[['two',[1]]]]]}}" bindtap="__e"><text>添加好友</text></view><view class="flex font-md align-center py-1 justify-center" hover-class="bg-light" data-event-opts="{{[['tap',[['two',[2]]]]]}}" bindtap="__e"><text>清除列表</text></view></popup></view>

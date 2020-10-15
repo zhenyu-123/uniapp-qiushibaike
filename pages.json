@@ -139,6 +139,7 @@
             "path" : "pages/user-chat/user-chat",
             "style" : {
 				"app-plus":{
+					"bounce":"none",
 					"titleNView":{
 						"buttons":[
 							{
@@ -153,6 +154,10 @@
 					}
 				}
 			}
+        }
+        ,{
+            "path" : "components/user-chat/user-chat",
+            "style" : {}
         }
     ],
 	"globalStyle": {
