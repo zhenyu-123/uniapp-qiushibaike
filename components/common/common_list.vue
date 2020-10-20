@@ -23,7 +23,7 @@
 			<!-- 标题 -->
 			<view class="font" style="margin: 10rpx 0;">{{ item.title }}</view>
 			<!-- 图片 -->
-			<image v-if="item.titlepic" @tap="detail" style="width: 100%;height: 350rpx;" :src="item.titlepic" mode="aspectFit"></image>
+			<image v-if="item.titlepic" @tap="detail(item)" style="width: 100%;height: 350rpx;" :src="item.titlepic" mode="aspectFit"></image>
 			<!-- 图标 -->
 			<view class="flex" style="align-items: center;">
 				<view
@@ -34,13 +34,17 @@
 					style="flex: 1;align-items: center;justify-content: center;"
 				>
 					<text class="iconfont icon-ziyuan " style="margin-right: 20rpx;"></text>
-					<text>{{ item.support.support_count>0 ?item.support.support_count:"支持" }}</text>
+					<text>{{ item.support.support_count > 0 ? item.support.support_count : '支持' }}</text>
 				</view>
-				<view class="flex animated"
-				 :class="item.support.type == 'unsupport' ? 'text-main' : ''"
-				 hover-class="rubberBand" @tap="nsupport(index)" style="flex: 1;align-items: center;justify-content: center;">
+				<view
+					class="flex animated"
+					:class="item.support.type == 'unsupport' ? 'text-main' : ''"
+					hover-class="rubberBand"
+					@tap="nsupport(index)"
+					style="flex: 1;align-items: center;justify-content: center;"
+				>
 					<text class="iconfont  icon-cai" style="margin-right: 20rpx;"></text>
-					<text>{{ item.support.unsupport_count>0?item.support.unsupport_count:"踩"  }}</text>
+					<text>{{ item.support.unsupport_count > 0 ? item.support.unsupport_count : '踩' }}</text>
 				</view>
 				<view class="flex animated" hover-class="rubberBand" @tap="commit" style="flex: 1;align-items: center;justify-content: center;">
 					<text class="iconfont icon-pinglun" style="margin-right: 20rpx;"></text>
@@ -59,7 +63,7 @@
 <script>
 import divider from './divider.vue';
 export default {
-	props: ['list','tabIndex'],
+	props: ['list', 'tabIndex'],
 	data() {
 		return {};
 	},
@@ -75,14 +79,18 @@ export default {
 			this.$emit('follow', index);
 		},
 		// 详情页面
-		detail() {},
+		detail(item) {
+			uni.navigateTo({
+				url: '/pages/detail/detail?data=' + JSON.stringify(item)
+			});
+		},
 		// 点赞
 		support(index) {
-			this.$emit('dosupport',{index,type:"support","tabIndex":this.tabIndex})
+			this.$emit('dosupport', { index, type: 'support', tabIndex: this.tabIndex });
 		},
 		//踩
 		nsupport(index) {
-			this.$emit('ndosupport',{index,type:"unsupport"})
+			this.$emit('ndosupport', { index, type: 'unsupport' });
 		},
 		//评论
 		commit() {},
