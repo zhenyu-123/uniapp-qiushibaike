@@ -93,7 +93,9 @@ export default {
 			this.$emit('ndosupport', { index, type: 'unsupport' });
 		},
 		//评论
-		commit() {},
+		commit() {
+			this.$emit("commit")
+		},
 		//转发
 		share() {}
 	},
